@@ -1,0 +1,18 @@
+<?php
+/*
+Plugin Name: Thickbox Thank You
+Description: Requires thickbox-content
+Author: Full Court WordPress
+Version: 1.0
+*/
+
+define('TBTY_BASE_DIR', dirname(__FILE__) . '/');
+define('LIB_DIR', TBTY_BASE_DIR . 'library/');
+define('TBTY_LIB_DIR', LIB_DIR . 'TBTY/');
+define('TBTY_URL', get_option('siteurl').'/wp-content/plugins/'.dirname(plugin_basename(__FILE__)) . '/');
+
+require_once TBTY_LIB_DIR . 'Plugin.php';
+$tbty_plugin = new TBTY_Plugin();
+
+add_action( 'init',       array($tbty_plugin, 'onInit'));
+add_action( 'admin_menu', array($tbty_plugin, 'onAdminMenu'));
